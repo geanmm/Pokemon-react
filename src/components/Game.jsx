@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import { content, getPokemons } from "../consts/PokemonAPI";
+import { getPokemons } from "../consts/PokemonAPI";
 
 function Game() {
+  const [loading, setLoading] = useState(true);
   const [pokemonView, setpokemonView] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
-  const [data, setData] = useState(content);
+  const [data, setData] = useState(0);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     const content = async () => {
-      const data = await getPokemons();
+      const data = await getPokemons(page);
       setData(data);
+      setLoading(false);
     };
     content();
   }, [page]);
@@ -25,6 +27,7 @@ function Game() {
     }
   }
 
+  if (loading) return;
   return (
     <div id="game">
       <header>
@@ -89,4 +92,5 @@ function Game() {
     </div>
   );
 }
+
 export default Game;
