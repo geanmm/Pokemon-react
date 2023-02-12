@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function shuffleArray(array = []) {
   var actual = array.length,
     temp,
