@@ -12,15 +12,17 @@ function GameEnd(props) {
           color: "#67a0fb",
         }}
       >
-        <div style={{ fontSize: 28, color: "#373740" }}>Congrats!</div>
-        <div style={{ fontSize: 30, color: "#e84a44", padding: 10 }}>
-          Your prize is... <span style={{ color: "#67a0fb" }}>Nothing</span>
+        <div style={{ fontSize: 28, color: "#373740" }}>You're a winner!</div>
+        <div style={{ fontSize: 35, color: "#e84a44", padding: 10 }}>
+          You've caught all{" "}
+          <span style={{ color: "#67a0fb" }}>{props.currentScore}</span>{" "}
+          pokemons!
         </div>
-        <img
-          src="/src/assets/pika.gif"
-          style={{ width: 150, marginBottom: 10 }}
-        />
-
+        <div id="pokemons_caught">
+          {props.storage.map((pokemon) => (
+            <img key={pokemon} src={pokemon} />
+          ))}
+        </div>
         <button
           style={{ margin: 10 }}
           onClick={() => {

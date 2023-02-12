@@ -12,10 +12,11 @@ function GameOver(props) {
           color: "#67a0fb",
         }}
       >
-        <div style={{ fontSize: 28, color: "#373740" }}>Oh, so close!</div>
-        <div style={{ fontSize: 45, color: "#e84a44", padding: 10 }}>
-          Pokemons Caught:{" "}
-          <span style={{ color: "#67a0fb" }}>{props.currentScore}</span>
+        <div style={{ fontSize: 28, color: "#373740" }}>Oh, don't give up!</div>
+        <div style={{ fontSize: 35, color: "#e84a44", padding: 10 }}>
+          You've caught{" "}
+          <span style={{ color: "#67a0fb" }}>{props.currentScore}</span>{" "}
+          pokemons!
         </div>
         <div id="pokemons_caught">
           {props.storage.map((pokemon) => (

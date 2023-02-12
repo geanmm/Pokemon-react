@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Start from "./components/Start";
 import Game from "./components/Game";
 import GameOver from "./components/GameOver";
 import GameEnd from "./components/GameEnd";
@@ -13,7 +14,9 @@ function App() {
   const [storage, setStorage] = useState([]);
 
   useEffect(() => {
+    if (!view) return;
     if (currentScore === 10) return setView(3);
+
     if (!timer) return setView(2);
 
     const counter = setInterval(() => {
@@ -26,6 +29,7 @@ function App() {
   }, [timer]);
 
   useEffect(() => {
+    if (!view) return;
     // if (timerLine === String(timerLine)) return;
     const counterLine = setTimeout(() => {
       setTimerLine(timerLine + 1);
@@ -78,13 +82,10 @@ function App() {
 
       default:
         return (
-          <Game
-            setView={setView}
-            currentScore={currentScore}
-            setCurrentScore={setCurrentScore}
+          <Start
             setTimer={setTimer}
             setTimerLine={setTimerLine}
-            setStorage={setStorage}
+            setView={setView}
           />
         );
     }
@@ -103,7 +104,7 @@ function App() {
       <div>{setCurrentView(view)}</div>
       <footer>
         <div>
-          Current Score: <span id="score">{currentScore}</span>
+          Pokemons Caught: <span id="score">{currentScore}</span>
         </div>
       </footer>
     </div>
